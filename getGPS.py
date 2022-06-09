@@ -14,6 +14,13 @@ https://github.com/inmcm/micropyGPS
 
 or the file can be directly copied into the working directory, and 
 and __init__.py file created to allow imports from the current directory.
+
+Since micropyGPS doesn't provide a version function, I have added the file
+to the directory of this project, and included an __init__.py file to allow
+for importing it.
+
+PySerial version 3.5 is used for this project, and can be found here
+https://github.com/pyserial/pyserial
 '''
 
 #we start by declaring the serial port of the GPS device.
