@@ -1,6 +1,5 @@
-import time
-from micropyGPS import MicropyGPS
-import serial
+import serial #required for serial communications
+from micropyGPS import MicropyGPS #GPS parser
 
 '''
 Our (and most) GPS modules return data through a serial comm port that
@@ -19,6 +18,8 @@ and __init__.py file created to allow imports from the current directory.
 
 #we start by declaring the serial port of the GPS device.
 #Our GPS module uses UART (serial comms) to send/recieve data
+
+#Step one, open the serial com port
 gps_module = serial.Serial("/dev/serial0")
 
 #we also select our time zone to correct the timestamp
@@ -34,6 +35,7 @@ def updateGPS():
 #of a dictionary with the keys being "lat", "long" and "timestamp".
 def GPS():
     #refresh GPS to latest reading
+    #Step two, get the GPS NEMA sentences from the GPS com port
     updateGPS()
 
     #read the latest 9 lines from the serial device
@@ -47,6 +49,7 @@ def GPS():
         counter += 1
     
     #parse the timestamp
+    #Step 3 Parse the NEMA sentences into usable data
     timeStamp = str(my_gps.timestamp[0])+':'+str(my_gps.timestamp[1])+':'+str(my_gps.timestamp[2])
     
     #parse the latitude
@@ -59,9 +62,6 @@ def GPS():
     Long = Long.strip("["); Long = Long.strip("]")
     Long = Long.replace("'",""); Long = Long.replace(" ",'') 
 
-    #return the parsed data in a dictionary and close the serial devices
+    #Step 4 Return the Desired GPS data
     return {"lat":Lat, "long":Long, "time":timeStamp}
     gps_module.close()
-
-
-
