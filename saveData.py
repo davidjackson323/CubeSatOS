@@ -1,6 +1,4 @@
 import os
-from picamera import PiCamera
-
 '''
 We need a convention for creating folders so that we
 can save data each time the satellite is turned on.
@@ -12,18 +10,25 @@ the previous save data each time the satellite is turned on.
 #this function checks for an existing data folder
 #and creates one if it does not (exist). 
 def getFolder():
+    #check for data folder
     directory = os.listdir()
     if 'data' in directory:
         print('data folder found')
 
+    #if not data folder, make one
     else:
         print('making data folder')
         os.mkdir('data')
 
+    #check for current operation folder
     currentFolder = len(os.listdir('data'))
+
+    #create unique name for current run
     currentFolder = currentFolder + 1
     currentFolder = 'data/' + str(currentFolder)
     os.mkdir(currentFolder)
+
+    #return name of current run/operation folder
     return(currentFolder)
 
     
@@ -35,7 +40,7 @@ measurement are associated with that single text file through a nameing conventi
 
 I include an index that refers to the current measurement readings,
 and name each picture image according to the current measurement index so we can
-associate the readigns to the image.
+associate the readings to the image.
 I.E. at this image (image 0), we have these readings (readings 0).
 
 To make things easy, I create a new folder for each associated reading range.
@@ -51,8 +56,11 @@ we only lose x# number of readings
 -argument dataToSave is the data readings to be saved to the text file
 -arguments folderIndex and index are the indexes required to keep track of the current
 data reading, as well as the current folder name. These are kept track by a variable 
-declared outside the saveData_and_Image().
-Doing so allows us to isolate calling camera functions to the main program so 
+declared outside the saveData_and_Image(). The function saveData_and_Image() returns
+the index, folderIndex and the save to location so that it can be updated with 
+successive run. This is meant to be ran in a while loop that executes for the entirety
+of operation. 
+Doing it this way allows us to isolate calling camera functions to the main program so 
 that we don't have to create and call the camera object functions everytime the function is used.
 This reduces processing time by 0.2 seconds for the RPI zero. 
 '''
@@ -70,11 +78,12 @@ def saveData_and_Image(currentFolder = "/data/1", dataToSave = "test\n", folderI
         saveTo = currentFolder + "/" + str(folderIndex)
         os.mkdir(saveTo)
     
+    #write the data readings to the text file
     if index != 0:
         with open(saveTo+"/"+str(folderIndex)+".txt", 'a+') as text_file:
             text_file.write(str(index)+","+dataToSave)
 
-    
+    #up the index and return folderIndex, index and save to location.
     index += 1
     return folderIndex, index, saveTo
 
@@ -107,8 +116,3 @@ while testCount < 121:
     testCount += 1 
 
 '''
-
-
-
-
-
