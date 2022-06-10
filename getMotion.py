@@ -1,5 +1,7 @@
 '''
 Read Gyro and Accelerometer by Interfacing Raspberry Pi with MPU6050 using Python
+
+I found this code at the site listed below, and modified it to return the gyro and accelerometer readings, in a dictionary with the appropriate keys.
 https://www.electronicwings.com/raspberry-pi/mpu6050-accelerometergyroscope-interfacing-with-raspberry-pi
 '''
 import smbus #import SMBus module of I2C
