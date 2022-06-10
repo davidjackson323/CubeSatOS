@@ -14,18 +14,18 @@ The current dependencies of this project are
 micropyGPS
 pyserial
 bmp280
-RPITX - Requires different installation process. Please refer to this page to install
-https://github.com/F5OEO/rpitx
+RPITX 
 
-pip install git+https://github.com/inmcm/micropyGPS.git
-pip install pyserial
-sudo pip install bmp280
 
-The documentation can be found for each library at their respective github pages, found here
+
+The documentation and installation process of those libraries are documented at their respective github pages, found below.
 
 https://github.com/inmcm/micropyGPS
+
 https://github.com/pyserial/pyserial
+
 https://github.com/pimoroni/py-smbus
+
 https://github.com/F5OEO/rpitx
 
 MicropyGPS is already provided in the master folder, but can also be downloaded from its github repository. 
