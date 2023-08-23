@@ -34,3 +34,18 @@ MicropyGPS is already provided in the master folder, but can also be downloaded 
 For smbus, the I2C protocol needs to be enabled. This can be done from the raspi-config menu. 
 If any questions on how to do so, please contact me. 
 
+![cubesat](https://github.com/davidjackson323/CubeSatOS/assets/19483270/79785f46-29a7-4d95-97d9-3482a019cb8d)
+
+
+![cubesat on](https://github.com/davidjackson323/CubeSatOS/assets/19483270/94301b9b-96a6-45a6-89fd-abe7ebe26fbe)
+
+
+https://github.com/davidjackson323/CubeSatOS/assets/19483270/12f0e842-e458-49d4-b164-922a75c00499
+
+
+![Team-Photo](https://github.com/davidjackson323/CubeSatOS/assets/19483270/4277ed5f-9ed7-4b97-9124-bc2505ee7761)
+
+
+
+
+
